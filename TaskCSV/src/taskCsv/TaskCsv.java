@@ -18,18 +18,20 @@ public class TaskCsv {
 		}
 		
 	}
-	/*
-	 * метод поиска максимального числа в заданной колонке (имя колонки - строка)
+	/**
+	 * method for finding the maximum number in a given column (column name - string) 
+	 * @param S - CSV
+	 * @param C - column name
+	 * @return result - maximum number
 	 */
 	public static int solution(String S, String C) {
 		int result = 0;
 		if(S.isEmpty() || C.isEmpty()) {
 			return result;
 		}
-		//найдем номер колонки с данными для поиска максимального
+		//find number of column with data to search for the maximum 
 		String sSplitFirstRow = S.split("\n")[0];
 		String [] sSplitToArr = sSplitFirstRow.split(",");
-		
 		int numbColumn = 0;
 		for(String elementArr : sSplitToArr) {
 			if(elementArr.equals(C)) {
@@ -40,29 +42,31 @@ public class TaskCsv {
 		}
 		return result;
 	}
-	/*
-	 * метод поиска  максимального числа в заданной колонке (по номеру колонки)
+	/**
+	 * method for finding the maximum number in a given column (by column number) 
+	 * @param S - CSV
+	 * @param numbColumn - column number
+	 * @return  - maximum number
 	 */
 	public static int findMaxValue(String S, int numbColumn) {
 		int result = 0;
 		if(S.isEmpty()) {
 			return result;
 		}
-		//закинем все записи таблицы в массив
+		//write all table records to an array 
 		String [] sSplitToArr = S.split("\n");
-		//в каждом элементе массива, в строке, будем выбирать элемент по номеру numbColumn
+		//in each element of the array, in a row, we will select an element by the number numbColumn 
 		TreeSet<Integer> valuesColumn = new TreeSet<Integer>();
 		for(String elementArr : sSplitToArr) {
 			String valueInColumn = elementArr.split(",")[numbColumn].trim();
 			try {
-			   //преобразуем String в int и будем закидывать в treeset
 			   valuesColumn.add(Integer.parseInt(valueInColumn));
 			}
 			catch (NumberFormatException e) {
 			   //continue;
 			}
 		}
-		//возьмем последний элемент treeset
+		//take last element of treeset 
 		if(!valuesColumn.isEmpty()) {
 			result = valuesColumn.last();
 		}
