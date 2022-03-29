@@ -1,4 +1,5 @@
 package taskCsv;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeSet;
@@ -10,6 +11,7 @@ public class TaskCsv {
 		mapString.put("mass", "uid,sname,mass,single,room,dep\n3,Jon,89,T,12,13\n14,Alex,101,F,18,4");
 		mapString.put("pop", "pop,land\n1412,CN\n1387,IN\n333,USA\n271,INA");
 		mapString.put("temp", "city,temp2,temp\nMinsk,6,-9\nBrest,4,-7\nGomel,-3,-1");
+		mapString.put("5555", "5555,land\n1412,CN\n1387,IN\n333,USA\n271,INA");
 		for(Map.Entry<String, String> entry : mapString.entrySet()) {
 			String C = entry.getKey();
 			String S = entry.getValue();
@@ -57,8 +59,10 @@ public class TaskCsv {
 		String [] sSplitToArr = S.split("\n");
 		//in each element of the array, in a row, we will select an element by the number numbColumn 
 		TreeSet<Integer> valuesColumn = new TreeSet<Integer>();
-		for(String elementArr : sSplitToArr) {
-			String valueInColumn = elementArr.split(",")[numbColumn].trim();
+		for(int i = 1; i < sSplitToArr.length; i++) {
+		//for(String elementArr : sSplitToArr) {
+			String valueInColumn = sSplitToArr[i].split(",")[numbColumn].trim();
+			//String valueInColumn = elementArr.split(",")[numbColumn].trim();
 			try {
 			   valuesColumn.add(Integer.parseInt(valueInColumn));
 			}
